@@ -11,7 +11,7 @@ namespace General.Player
 
         public event Action<GameObject> OnCollisionEnterChange;
         
-        private void OnCollisionEnter2D(Collision2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             OnCollisionEnterChange?.Invoke(other.gameObject);
         }

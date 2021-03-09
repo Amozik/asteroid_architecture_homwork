@@ -9,9 +9,10 @@ namespace General.Controllers
         private float _hp;
         private PlayerBase _player;
 
-        public HealthController(PlayerBase player)
+        public HealthController(PlayerBase player, float hp)
         {
             _player = player;
+            _hp = hp;
         }
 
         public void Initialization()
