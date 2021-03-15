@@ -7,5 +7,6 @@ namespace General
     public class GameConfig : ScriptableObject
     {
         public PlayerConfig playerConfig;
+        public EnemiesConfig enemiesConfig;
     }
 }
