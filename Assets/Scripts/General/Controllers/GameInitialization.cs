@@ -1,4 +1,7 @@
 ﻿using General.Enemies;
+using General.Interfaces;
+using General.Managers;
+using General.Pool;
 
 namespace General.Controllers
 {
@@ -6,6 +9,8 @@ namespace General.Controllers
     {
         public GameInitialization(ControllersHandler controllersHandler, GameConfig data)
         {
+            ServiceLocator.SetService<IViewService>(new ViewViewService());
+            
             var inputInitialization = new InputInitialization();
             
             var playerInitialization = new PlayerInitialization(data.playerConfig);
