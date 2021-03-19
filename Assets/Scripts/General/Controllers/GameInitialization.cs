@@ -25,6 +25,7 @@ namespace General.Controllers
             controllersHandler.Add(new EnemyMoveController(enemyInitialization.GetMoveEnemies()));
             controllersHandler.Add(new HealthController(playerInitialization.Player, data.playerConfig.playerHP));
             controllersHandler.Add(new WeaponController(inputInitialization.GetFire(), playerInitialization.Weapon));
+            controllersHandler.Add(new SpawnerInitialization(enemyInitialization.GetEnemies()));
         }
     }
 }

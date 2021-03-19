@@ -2,6 +2,6 @@
 {
     public interface IEnemyFactory
     {
-        Enemy CreateEnemy(EnemyType type);
+        IEnemy CreateEnemy(EnemyType type);
     }
 }
