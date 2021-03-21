@@ -29,7 +29,7 @@ namespace General.Controllers
                 _move = new MoveTransform(_player.transform, playerConfig.playerSpeed);
             }
             
-            _weapon = new PlayerWeapon(_player.Barrel, playerConfig.bullet, playerConfig.bulletForce);
+            _weapon = new PlayerWeapon(_player.Barrel, playerConfig.bullet, playerConfig.bulletSprite, playerConfig.bulletForce);
 
         }
 
