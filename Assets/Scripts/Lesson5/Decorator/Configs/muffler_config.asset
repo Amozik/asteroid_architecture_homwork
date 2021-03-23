@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 08e558919afd414997903480198f5681, type: 3}
-  m_Name: MufflerConfig
+  m_Name: muffler_config
   m_EditorClassIdentifier: 
   audioClip: {fileID: 0}
-  volumeFireOn: 0
+  volumeFireOn: 5
   barrelPosition: {fileID: 0}
-  muffler: {fileID: 0}
+  muffler: {fileID: 7930299193608504996, guid: 85ed914553f1df44d9282dcfa9b163b3, type: 3}

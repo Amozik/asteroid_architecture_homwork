@@ -1,3 +1,16 @@
 {
-	"name": "Lesson5"
+    "name": "Lesson5",
+    "rootNamespace": "",
+    "references": [
+        "GUID:e5d5d61f9d63210478eae79f8850ff03"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
