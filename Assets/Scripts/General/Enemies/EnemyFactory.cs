@@ -11,7 +11,7 @@ namespace General.Enemies
             _enemies = enemiesConfig;
         }
         
-        public Enemy CreateEnemy(EnemyType type)
+        public IEnemy CreateEnemy(EnemyType type)
         {
             var (enemy, hp) = _enemies.GetEnemy(type);
 

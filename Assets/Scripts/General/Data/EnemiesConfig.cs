@@ -13,6 +13,7 @@ namespace General
         public Enemy EnemyPrefab;
         public int HP;
         public float Speed;
+        public Transform SpawnPosition;
     }
     
     [CreateAssetMenu(fileName = "EnemiesConfig", menuName = "Configs/EnemiesConfig", order = 0)]

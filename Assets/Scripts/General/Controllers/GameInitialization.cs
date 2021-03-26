@@ -1,4 +1,7 @@
 ﻿using General.Enemies;
+using General.Interfaces;
+using General.Managers;
+using General.Pool;
 
 namespace General.Controllers
 {
@@ -6,6 +9,8 @@ namespace General.Controllers
     {
         public GameInitialization(ControllersHandler controllersHandler, GameConfig data)
         {
+            ServiceLocator.SetService<IViewService>(new ViewViewService());
+            
             var inputInitialization = new InputInitialization();
             
             var playerInitialization = new PlayerInitialization(data.playerConfig);
@@ -19,7 +24,8 @@ namespace General.Controllers
             controllersHandler.Add(new MoveController(inputInitialization.GetInput(), playerInitialization.Move));
             controllersHandler.Add(new EnemyMoveController(enemyInitialization.GetMoveEnemies()));
             controllersHandler.Add(new HealthController(playerInitialization.Player, data.playerConfig.playerHP));
-            controllersHandler.Add(new WeaponController(inputInitialization.GetFire(), playerInitialization.Weapon));
+            controllersHandler.Add(new WeaponController(inputInitialization.GetFire(), playerInitialization.Player, playerInitialization.Weapon, data.playerConfig.weaponCooldown));
+            controllersHandler.Add(new SpawnerInitialization(enemyInitialization.GetEnemies()));
         }
     }
 }

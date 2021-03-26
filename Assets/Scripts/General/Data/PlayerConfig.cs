@@ -10,6 +10,8 @@ namespace General
         public float playerSpeed;
         public float playerHP;
         public Rigidbody2D bullet;
+        public Sprite bulletSprite;
         public float bulletForce;
+        public float weaponCooldown;
     }
 }
