@@ -1,4 +1,5 @@
-﻿using General.Enemies;
+﻿using General.Controllers.UI;
+using General.Enemies;
 using General.Interfaces;
 using General.Managers;
 using General.Pool;
@@ -16,6 +17,8 @@ namespace General.Controllers
             var playerInitialization = new PlayerInitialization(data.playerConfig);
             
             var enemyInitialization = new EnemyInitialization(data.enemiesConfig);
+            
+            var uiInitialization = new UiInitialization(data.uiConfig);
 
             controllersHandler.Add(inputInitialization);
             controllersHandler.Add(playerInitialization);
@@ -26,6 +29,7 @@ namespace General.Controllers
             controllersHandler.Add(new HealthController(playerInitialization.Player, data.playerConfig.playerHP));
             controllersHandler.Add(new WeaponController(inputInitialization.GetFire(), playerInitialization.Player, playerInitialization.Weapon, data.playerConfig.weaponCooldown));
             controllersHandler.Add(new SpawnerInitialization(enemyInitialization.GetEnemies()));
+            controllersHandler.Add(new ScoreController(uiInitialization.Score));
         }
     }
 }
