@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: ui_config
   m_EditorClassIdentifier: 
   score: {fileID: 8057829356083630143, guid: 0f15e5c3f395d1e469b0fe23754ddf50, type: 3}
-  endGame: {fileID: 0}
+  endGame: {fileID: 4956824870367723445, guid: 214d92cb320a1a646a0fe4dc70783c7b, type: 3}
+  pauseMenu: {fileID: 4714096961642807000, guid: 224d25f4ae3e32642bc41a5cf8a758d6, type: 3}

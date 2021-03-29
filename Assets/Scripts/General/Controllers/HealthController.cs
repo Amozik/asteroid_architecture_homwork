@@ -1,6 +1,8 @@
-﻿using General.Interfaces;
+﻿using System;
+using General.Interfaces;
 using General.Player;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace General.Controllers
 {
@@ -8,6 +10,7 @@ namespace General.Controllers
     {
         private float _hp;
         private PlayerBase _player;
+        public event Action OnDeath;
 
         public HealthController(PlayerBase player, float hp)
         {
@@ -25,6 +28,7 @@ namespace General.Controllers
             if (_hp <= 0)
             {
                 Object.Destroy(_player);
+                OnDeath?.Invoke();
             }
             else
             {
