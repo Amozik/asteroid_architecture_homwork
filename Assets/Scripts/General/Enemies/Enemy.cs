@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using General.Stats;
 using UnityEngine;
 
@@ -8,6 +9,9 @@ namespace General.Enemies
     {
         public Health Health { get; private set; }
         public int Points { get; private set; }
+
+        public EnemyAbilities Abilities;
+            
         public event Action<GameObject> OnTriggerEnterChange;
         public event Action<Enemy> OnClone;
 
@@ -19,6 +23,10 @@ namespace General.Enemies
         
             enemy.Health = new Health(hp, hp);
             enemy.Points = points;
+            enemy.Abilities = new EnemyAbilities(new List<IAbility>()
+            {
+                new Ability("ship", 2)
+            });
             enemy._enemyPrefab = enemyPrefab;
         
             return enemy;
@@ -30,6 +38,10 @@ namespace General.Enemies
         
             enemy.Health = new Health(hp, hp);
             enemy.Points = points;
+            enemy.Abilities = new EnemyAbilities(new List<IAbility>()
+            {
+                new Ability("asteroid", 2)
+            });
             enemy._enemyPrefab = enemyPrefab;
             
             return enemy;
@@ -41,6 +53,7 @@ namespace General.Enemies
 
             enemy.Health = new Health(Health.Max, Health.Current);
             enemy.Points = Points;
+            enemy.Abilities = Abilities;
             enemy._enemyPrefab = _enemyPrefab;
             
             OnClone?.Invoke(enemy);

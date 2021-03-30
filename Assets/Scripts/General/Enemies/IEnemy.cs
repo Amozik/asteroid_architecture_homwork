@@ -7,6 +7,7 @@ namespace General.Enemies
     public interface IEnemy
     {
         Health Health { get; }
+        int Points { get; }
         event Action<GameObject> OnTriggerEnterChange;
     }
 }

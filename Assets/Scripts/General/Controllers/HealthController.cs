@@ -1,4 +1,5 @@
 ﻿using System;
+using General.Enemies;
 using General.Interfaces;
 using General.Player;
 using UnityEngine;
@@ -23,8 +24,13 @@ namespace General.Controllers
             _player.OnCollisionEnterChange += OnCollisionPlayer;
         }
 
-        private void OnCollisionPlayer(GameObject enemy)
+        private void OnCollisionPlayer(GameObject other)
         {
+            var enemy = other.GetComponent<Enemy>();
+            
+            if (!enemy)
+                return;
+            
             if (_hp <= 0)
             {
                 Object.Destroy(_player);
@@ -32,7 +38,7 @@ namespace General.Controllers
             }
             else
             {
-                _hp--;
+                _hp -= enemy.Abilities.MaxDamage;
             }
         }
         
