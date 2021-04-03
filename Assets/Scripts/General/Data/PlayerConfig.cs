@@ -12,5 +12,6 @@ namespace General
         public Rigidbody2D bullet;
         public Sprite bulletSprite;
         public float bulletForce;
+        public float weaponCooldown;
     }
 }
