@@ -13,6 +13,7 @@ namespace General
         public Enemy EnemyPrefab;
         public int HP;
         public float Speed;
+        public int Points = 1;
         public Transform SpawnPosition;
     }
     
@@ -24,10 +25,10 @@ namespace General
 
         public List<EnemyInfo> Enemies => _enemies;
         
-        public (Enemy enemy, int hp) GetEnemy(EnemyType type)
+        public (Enemy enemy, int hp, int points) GetEnemy(EnemyType type)
         {
             var enemyInfo = _enemies.First(info => info.Type == type);
-            return (enemyInfo.EnemyPrefab, enemyInfo.HP);
+            return (enemyInfo.EnemyPrefab, enemyInfo.HP, enemyInfo.Points);
         }
     }
 }

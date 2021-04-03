@@ -13,15 +13,15 @@ namespace General.Enemies
         
         public IEnemy CreateEnemy(EnemyType type)
         {
-            var (enemy, hp) = _enemies.GetEnemy(type);
+            var (enemy, hp, points) = _enemies.GetEnemy(type);
 
             switch (type)
             {
                 case EnemyType.Asteroid:
-                    return Enemy.CreateAsteroidEnemy((Asteroid) enemy, hp);
+                    return Enemy.CreateAsteroidEnemy((Asteroid) enemy, hp, points);
                     break;
                 case EnemyType.Ship:
-                    return Enemy.CreateShipEnemy((Ship) enemy, hp);
+                    return Enemy.CreateShipEnemy((Ship) enemy, hp, points);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);

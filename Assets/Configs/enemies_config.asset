@@ -17,7 +17,11 @@ MonoBehaviour:
     EnemyPrefab: {fileID: 1460420640011231849, guid: a4bd990d37f96054392fd02a28f92b16, type: 3}
     HP: 5
     Speed: 2.5
+    Points: 10
+    SpawnPosition: {fileID: 0}
   - Type: 0
     EnemyPrefab: {fileID: 8920001127578196465, guid: 0307e593651e1c74fbbdc198fa850480, type: 3}
     HP: 2
     Speed: 2
+    Points: 5
+    SpawnPosition: {fileID: 0}

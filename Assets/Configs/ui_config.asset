@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 926d2d6721eef874b84ed1d9b7f592d4, type: 3}
+  m_Name: ui_config
+  m_EditorClassIdentifier: 
+  score: {fileID: 8057829356083630143, guid: 0f15e5c3f395d1e469b0fe23754ddf50, type: 3}
+  endGame: {fileID: 4956824870367723445, guid: 214d92cb320a1a646a0fe4dc70783c7b, type: 3}
+  pauseMenu: {fileID: 4714096961642807000, guid: 224d25f4ae3e32642bc41a5cf8a758d6, type: 3}

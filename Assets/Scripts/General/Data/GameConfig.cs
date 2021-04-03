@@ -8,5 +8,6 @@ namespace General
     {
         public PlayerConfig playerConfig;
         public EnemiesConfig enemiesConfig;
+        public UiConfig uiConfig;
     }
 }
