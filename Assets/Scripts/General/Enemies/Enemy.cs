@@ -61,11 +61,17 @@ namespace General.Enemies
             enemy.Points = Points;
             enemy.Abilities = Abilities;
             enemy.OnDestroy = OnDestroy;
+            enemy._type = _type;
             enemy._enemyPrefab = _enemyPrefab;
             
             OnClone?.Invoke(enemy);
             
             return enemy;
+        }
+        
+        public void Activate(ISpawnVisitor value)
+        {
+            value.Visit(this, _type.ToString());
         }
 
         private void OnTriggerEnter2D(Collider2D other)

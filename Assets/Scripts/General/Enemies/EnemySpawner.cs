@@ -40,6 +40,8 @@ namespace General.Enemies
             newEnemy.OnTriggerEnterChange += OnTriggerEnemy;
             
             OnSpawnEnemy?.Invoke(newEnemy);
+            
+            newEnemy.Activate(new ConsoleDisplaySpawn());
 
             return newEnemy;
         }
