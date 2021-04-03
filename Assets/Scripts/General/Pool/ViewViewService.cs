@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using General.Interfaces;
 using UnityEngine;
 
 namespace General.Pool
 {
-    internal sealed class ViewServices
+    internal sealed class ViewViewService : IViewService
     {
         private readonly Dictionary<int, ObjectPool> _viewCache = new Dictionary<int, ObjectPool>(12);
         

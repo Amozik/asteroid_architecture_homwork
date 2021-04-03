@@ -1,9 +1,12 @@
 ﻿using System;
+using General.Stats;
+using UnityEngine;
 
 namespace General.Enemies
 {
     public interface IEnemy
     {
-        event Action<int> OnTriggerEnterChange;
+        Health Health { get; }
+        event Action<GameObject> OnTriggerEnterChange;
     }
 }

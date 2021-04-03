@@ -10,17 +10,17 @@ namespace General.Controllers
     {
         private readonly IEnemyFactory _enemyFactory;
         private CompositeMove _enemy;
-        private List<IEnemy> _enemies;
+        private List<Enemy> _enemies;
 
         public EnemyInitialization(EnemiesConfig enemiesConfig)
         {
             _enemyFactory = new EnemyFactory(enemiesConfig);;
             _enemy = new CompositeMove();
-            _enemies = new List<IEnemy>();
+            _enemies = new List<Enemy>();
                 
             foreach (var enemyInfo in enemiesConfig.Enemies)
             {
-                var enemy = _enemyFactory.CreateEnemy(enemyInfo.Type);
+                var enemy = (Enemy) _enemyFactory.CreateEnemy(enemyInfo.Type);
                 AddMove(enemy, enemyInfo.Speed);
                 _enemies.Add(enemy);
             }
@@ -35,7 +35,7 @@ namespace General.Controllers
             return _enemy;
         }
 
-        public IEnumerable<IEnemy> GetEnemies()
+        public IEnumerable<Enemy> GetEnemies()
         {
             foreach (var enemy in _enemies)
             {
@@ -43,7 +43,7 @@ namespace General.Controllers
             }
         }
 
-        private void AddMove(Component enemy, float speed)
+        private void AddMove(Enemy enemy, float speed)
         {
             var rigidbody = enemy.GetComponent<Rigidbody2D>();
 
@@ -59,6 +59,12 @@ namespace General.Controllers
             }
             
             _enemy.AddUnit(move);
+            enemy.OnClone += newEnemy =>
+            {
+                _enemy.RemoveUnit(move);
+                AddMove(newEnemy, speed);
+                _enemies.Add(newEnemy);
+            };
         }
     }
 }

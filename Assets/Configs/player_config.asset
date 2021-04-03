@@ -16,4 +16,5 @@ MonoBehaviour:
   playerSpeed: 5
   playerHP: 10
   bullet: {fileID: 7177892760896806684, guid: fcb2e58f1bf0b174593450ef1b38e97e, type: 3}
+  bulletSprite: {fileID: 21300000, guid: da2181eb402bb9245abbe81e2a628714, type: 3}
   bulletForce: 1000
