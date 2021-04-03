@@ -1,4 +1,6 @@
-﻿using General.Interfaces;
+﻿using System;
+using General.Enemies;
+using General.Interfaces;
 using General.Managers;
 using General.Pool;
 using UnityEngine;
@@ -11,6 +13,7 @@ namespace General.Player
         private GameObject _bullet;
         private float _force;
         private IViewService _pool;
+        public event Action OnShoot;
 
         public PlayerWeapon(Transform bulletSpawner, Rigidbody2D bullet, Sprite bulletSprite, float force)
         {
@@ -28,6 +31,8 @@ namespace General.Player
             
             temAmmunition.GetComponent<Rigidbody2D>().AddForce(_bulletSpawner.up * _force);
             temAmmunition.GetComponent<Bullet>().OnBecameInvisibleEvent += gameObject => _pool.Destroy(_bullet, gameObject);
+            
+            OnShoot?.Invoke();
         }
     }
 }

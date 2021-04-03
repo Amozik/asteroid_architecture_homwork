@@ -1,5 +1,6 @@
 ﻿using General.Interfaces;
 using General.Player;
+using General.Player.States;
 using UnityEngine;
 
 namespace General.Controllers
@@ -17,7 +18,8 @@ namespace General.Controllers
         {
             _player = player;
             _lockedWeapon = new LockedWeapon(false);
-            _weapon = new WeaponProxy(weapon, _lockedWeapon);;
+            _weapon = new WeaponProxy(weapon, _lockedWeapon);
+            _weapon.OnShoot += OnShoot;
             _cooldown = cooldown;
             _fireInputProxy = fireInput;
             _fireInputProxy.ButtonOnDown += OnFire;
@@ -36,12 +38,21 @@ namespace General.Controllers
                 return;
             
             _lockedWeapon.IsLocked = true;
+            _player.State = new FreezeState();
+            _player.RequestState();
+        }
+
+        private void OnShoot()
+        {
+            _player.State = new FireState();
+            _player.RequestState();
         }
 
         public void Cleanup()
         {
             _fireInputProxy.ButtonOnDown -= OnFire;
             _player.OnCollisionEnterChange -= OnCollisionPlayer;
+            _weapon.OnShoot -= OnShoot;
         }
 
         public void Execute(float deltaTime)

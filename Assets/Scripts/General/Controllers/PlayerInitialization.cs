@@ -1,5 +1,6 @@
 ﻿using General.Interfaces;
 using General.Player;
+using General.Player.States;
 using UnityEngine;
 
 namespace General.Controllers
@@ -18,6 +19,9 @@ namespace General.Controllers
         {
             _player = Object.Instantiate(playerConfig.playerPrefab);
 
+            _player.State = new FlyState();
+            _player.RequestState();
+            
             var rigidbody = _player.GetComponent<Rigidbody2D>();
 
             if (rigidbody)
@@ -30,7 +34,6 @@ namespace General.Controllers
             }
             
             _weapon = new PlayerWeapon(_player.Barrel, playerConfig.bullet, playerConfig.bulletSprite, playerConfig.bulletForce);
-
         }
 
         public void Initialization()
