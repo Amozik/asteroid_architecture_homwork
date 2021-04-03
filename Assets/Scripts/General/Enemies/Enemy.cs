@@ -14,8 +14,12 @@ namespace General.Enemies
             
         public event Action<GameObject> OnTriggerEnterChange;
         public event Action<Enemy> OnClone;
+        
+        public Action<string> OnDestroy;
 
         private Enemy _enemyPrefab;
+
+        private EnemyType _type;
         
         internal static Ship CreateShipEnemy(Ship enemyPrefab, int hp, int points)
         {
@@ -27,6 +31,7 @@ namespace General.Enemies
             {
                 new Ability("ship", 2)
             });
+            enemy._type = EnemyType.Ship;
             enemy._enemyPrefab = enemyPrefab;
         
             return enemy;
@@ -42,6 +47,7 @@ namespace General.Enemies
             {
                 new Ability("asteroid", 2)
             });
+            enemy._type = EnemyType.Asteroid;
             enemy._enemyPrefab = enemyPrefab;
             
             return enemy;
@@ -54,6 +60,7 @@ namespace General.Enemies
             enemy.Health = new Health(Health.Max, Health.Current);
             enemy.Points = Points;
             enemy.Abilities = Abilities;
+            enemy.OnDestroy = OnDestroy;
             enemy._enemyPrefab = _enemyPrefab;
             
             OnClone?.Invoke(enemy);
@@ -64,6 +71,11 @@ namespace General.Enemies
         private void OnTriggerEnter2D(Collider2D other)
         {
             OnTriggerEnterChange?.Invoke(other.gameObject);
+        }
+
+        public override string ToString()
+        {
+            return _type.ToString();
         }
     }
 }

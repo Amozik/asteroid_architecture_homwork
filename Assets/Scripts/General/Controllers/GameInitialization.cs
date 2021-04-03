@@ -3,6 +3,7 @@ using General.Enemies;
 using General.Interfaces;
 using General.Managers;
 using General.Pool;
+using General.UI;
 
 namespace General.Controllers
 {
@@ -16,9 +17,9 @@ namespace General.Controllers
             
             var playerInitialization = new PlayerInitialization(data.playerConfig);
             
-            var enemyInitialization = new EnemyInitialization(data.enemiesConfig);
-            
             var uiInitialization = new UiInitialization(data.uiConfig);
+            
+            var enemyInitialization = new EnemyInitialization(data.enemiesConfig, new DisplayDestroyedEnemies(uiInitialization.DestroyedEnemies));
 
             controllersHandler.Add(inputInitialization);
             controllersHandler.Add(playerInitialization);
