@@ -6,6 +6,7 @@ namespace General
     public class UiConfig : ScriptableObject
     {
         public GameObject score;
+        public GameObject destroyedEnemies;
         public GameObject endGame;
         public GameObject pauseMenu;
     }

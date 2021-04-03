@@ -40,6 +40,8 @@ namespace General.Enemies
             newEnemy.OnTriggerEnterChange += OnTriggerEnemy;
             
             OnSpawnEnemy?.Invoke(newEnemy);
+            
+            newEnemy.Activate(new ConsoleDisplaySpawn());
 
             return newEnemy;
         }
@@ -54,8 +56,9 @@ namespace General.Enemies
                     _enemy.OnTriggerEnterChange -= OnTriggerEnemy;
                     var newEnemy = SpawnEnemy();
                     Object.Destroy(_enemy.gameObject);
+                    _enemy.OnDestroy?.Invoke(_enemy.ToString());
                     _enemy = newEnemy;
-
+                    
                     var message = new EnemyDestroyMessage()
                     {
                         points = _enemy.Points

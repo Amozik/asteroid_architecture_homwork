@@ -2,6 +2,7 @@
 using General.Enemies;
 using General.Interfaces;
 using General.Player;
+using General.UI;
 using UnityEngine;
 
 namespace General.Controllers
@@ -11,17 +12,20 @@ namespace General.Controllers
         private readonly IEnemyFactory _enemyFactory;
         private CompositeMove _enemy;
         private List<Enemy> _enemies;
-
-        public EnemyInitialization(EnemiesConfig enemiesConfig)
+        private DisplayDestroyedEnemies _displayDestroyedEnemies;
+        
+        public EnemyInitialization(EnemiesConfig enemiesConfig, DisplayDestroyedEnemies displayDestroyedEnemies)
         {
             _enemyFactory = new EnemyFactory(enemiesConfig);;
             _enemy = new CompositeMove();
             _enemies = new List<Enemy>();
+            _displayDestroyedEnemies = displayDestroyedEnemies;
                 
             foreach (var enemyInfo in enemiesConfig.Enemies)
             {
                 var enemy = (Enemy) _enemyFactory.CreateEnemy(enemyInfo.Type);
                 AddMove(enemy, enemyInfo.Speed);
+                _displayDestroyedEnemies.Add(enemy);
                 _enemies.Add(enemy);
             }
         }
@@ -63,6 +67,7 @@ namespace General.Controllers
             {
                 _enemy.RemoveUnit(move);
                 AddMove(newEnemy, speed);
+                _displayDestroyedEnemies.Add(enemy);
                 _enemies.Add(newEnemy);
             };
         }

@@ -1,7 +1,10 @@
-﻿namespace General.Player
+﻿using System;
+
+namespace General.Player
 {
     public interface IWeapon
     {
-        public void Shoot();
+        void Shoot();
+        event Action OnShoot;
     }
 }
